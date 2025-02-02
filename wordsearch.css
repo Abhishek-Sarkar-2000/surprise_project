@@ -1,0 +1,206 @@
+.heart-container {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    margin: 30px auto 0 auto;
+}
+
+.heart-shape {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ff4d6d;
+    font-size: 1050px; /* Adjust size as needed */
+    opacity: 0.7;
+    z-index: 0.5;
+}
+
+.word-search-grid {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.grid-cell {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #333;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+/* Hover effect ONLY for non-selected cells */
+.grid-cell:not(.selected):not(.correct):hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.grid-cell:not(.selected):not(.correct):hover::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background-color: rgba(255, 77, 109, 0.8);
+    z-index: -1;
+    animation: pulseHover 1s ease infinite;
+}
+
+/* Selection styling */
+.grid-cell.selected::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background-color: rgba(255, 77, 109, 0.3);
+    z-index: -1;
+}
+
+.grid-cell.correct::before {
+    background-color: rgba(255, 77, 109, 0.6);
+}
+
+@keyframes pulseHover {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.1;
+    }
+}
+
+.instruction-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    color: #d63384;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px 30px;
+    border-radius: 10px;
+    margin: 0 auto 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    z-index: 1;
+}
+
+.confirm-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+    width: auto;
+    min-width: 200px;
+}
+
+.confirm-btn.inactive {
+    background-color: #cccccc;
+    color: #666666;
+    pointer-events: none; /* This properly disables interaction */
+    box-shadow: none;
+}
+
+.confirm-btn.active {
+    background-color: #bc2541;
+    color: white;
+    cursor: pointer;
+    pointer-events: auto; /* Ensure clicks are registered */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.confirm-btn.active:hover {
+    transform: scale(1.05);
+    border: 3px solid white;
+    box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.4),
+                3px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+.hint-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: auto;
+    padding: 10px 25px;
+}
+
+.hint-modal {
+    position: fixed;
+    bottom: 100px;  /* Position above the hint button */
+    right: 30px;    /* Align with hint button */
+    transform: translateX(0);  /* Remove center positioning */
+    background: white;
+    padding: 20px 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-family: 'Poppins', sans-serif;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.hint-word {
+    font-weight: 600;
+    color: #ff4d6d;
+    letter-spacing: 2px;
+}
+
+.hint-modal.show {
+    opacity: 1;
+    visibility: visible;
+    animation: fadeInOutAbove 2s ease forwards;
+}
+
+@keyframes fadeInOutAbove {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    15% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    85% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+}

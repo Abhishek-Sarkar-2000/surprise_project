@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Special One</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="wordsearch.css">
+</head>
+<body>
+    <div class="background"></div>
+
+    <div class="container">
+        <p class="instruction-text">Find your valentine for a surprise</p>
+        
+        <div class="heart-container">
+            <i class="fas fa-heart heart-shape"></i>
+            <div class="word-search-grid">
+                <!-- Grid will be filled by JavaScript -->
+            </div>
+        </div>
+
+        <button id="confirm-btn" class="confirm-btn inactive">
+            Confirm Selection
+        </button>
+        
+        <button class="hint-btn" onclick="showHint()">
+            <i class="fas fa-lightbulb"></i> Hint
+        </button>
+    </div>
+
+    <div id="hint-modal" class="hint-modal">
+        <div class="hint-content">
+            <p>Find your boo: <span class="hint-word">4-letter A-name</span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="wordsearch.js"></script>
+</body>
+</html>

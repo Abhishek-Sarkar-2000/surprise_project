@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600&display=swap');
+
+body {
+    background-color: #ffe6e6;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.75rem;
+    color: #d63384;
+    margin-bottom: 30px;
+}
+
+.button-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #d63384;
+    color: white;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    transform-origin: center center;
+    z-index: 10;
+}
+
+.yes-btn {
+    z-index: 100;
+}
+
+button:hover {
+    transform: scale(1.1);
+    border: 3px solid white;
+    box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.4),
+                3px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Regular floating hearts and flowers base styles */
+.heart, .flower {
+    position: absolute;
+    opacity: 0.6;
+}
+
+/* Heart specific styles */
+.heart:not(.big-heart) {
+    color: #ffb6c1;
+    animation: floatHearts 5s linear infinite;
+}
+
+/* Flower specific styles */
+.flower {
+    color: #ffc0cb; /* Different shade of pink for flowers */
+    animation: floatFlowers 5s linear infinite;
+    transform-origin: center center;
+}
+
+/* Different flower colors for variety */
+.flower {
+    animation: floatFlowers 5s linear infinite;
+    transform-origin: center center;
+}
+
+/* Different flower colors for variety using available icons */
+.fa-asterisk {
+    color: #ff69b4; /* Hot pink */
+    font-weight: 100; /* Make it look more delicate */
+}
+
+.fa-sun {
+    color: #ffb6c1; /* Light pink */
+}
+
+.fa-snowflake {
+    color: #ffc0cb; /* Pink */
+}
+
+.fa-spa {
+    color: #ff85a2; /* Coral pink */
+}
+
+/* Make sure regular weight icons are slightly more visible */
+.far {
+    opacity: 0.8;
+}
+
+/* Big falling hearts */
+.big-heart {
+    position: fixed;
+    color: #ff69b4;
+    opacity: 0.8;
+    z-index: 5;
+    animation: fallAndRotate var(--fall-duration) linear forwards;
+    transform-origin: center center;
+    filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.3));
+}
+
+/* Animation for hearts floating up */
+@keyframes floatHearts {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Animation for flowers floating up with rotation */
+@keyframes floatFlowers {
+    0% {
+        transform: translateY(100vh) rotate(var(--initial-rotation)) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-10vh) rotate(calc(var(--initial-rotation) + 360deg)) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Animation for big falling hearts */
+@keyframes fallAndRotate {
+    0% {
+        transform: translateY(-20vh) rotate(var(--initial-rotation));
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(120vh) rotate(calc(var(--initial-rotation) + (360deg * var(--rotation-direction))));
+        opacity: 0;
+    }
+}
